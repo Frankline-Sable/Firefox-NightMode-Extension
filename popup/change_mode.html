@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="change_mode.css" rel="stylesheet">
+</head>
+<body>
+<div style="text-align: center">
+    <div id="popup-content">
+        <div>
+            Switch <em>night mode</em> on or off
+        </div>
+        <!--Rounded switch-->
+        <label class="switch">
+            <input type="checkbox" class="toggle" id="toggle">
+            <div class="slider round"></div>
+        </label>
+        <div></div>
+        <br>
+    </div>
+
+    <div id="error-content" class="hidden">
+        <img src="images/error.png" width="24px" height="24px">
+        <br>
+        Error(night mode is not <em>supported</em>)
+    </div>
+</div>
+</body>
+<script src="change_mode.js"></script>
+</html>

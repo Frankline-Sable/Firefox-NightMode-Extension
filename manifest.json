@@ -1,0 +1,24 @@
+{
+  "name": "Night Mode Toggle",
+  "version": "1.0.0",
+  "description":"Turn night mode in any page, to browse comfortably during the night",
+  "author":"Frankline Sable",
+  "homepage_url": "https://github.com/Frankline-Sable",
+
+  "icons": {
+    "48": "icons/night_48px.png",
+    "96": "icons/night_96px.png"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_icon": "icons/day.png",
+    "default_title": "Night MD",
+    "default_popup": "popup/change_mode.html"
+  },
+  "web_accessible_resources": [
+    "popup/images/moon_smile.png"
+  ],
+  "manifest_version": 2
+}
