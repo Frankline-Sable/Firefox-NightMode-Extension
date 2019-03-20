@@ -7,23 +7,42 @@
 </head>
 <body>
 <div style="text-align: center">
+    <!-- <div id="popup-content">
+         <div>
+             Switch <em>night mode</em> on or off
+         </div>
+         <label class="switch">
+             <input type="checkbox" class="toggle" id="toggle">
+             <div class="slider round"></div>
+         </label>
+         <div></div>
+         <br>
+     </div>-->
     <div id="popup-content">
         <div>
             Switch <em>night mode</em> on or off
         </div>
-        <!--Rounded switch-->
-        <label class="switch">
-            <input type="checkbox" class="toggle" id="toggle">
-            <div class="slider round"></div>
-        </label>
+        <br>
+        <form autocomplete="on" name="mForm">
+            <label class="switch">
+
+                <input type="checkbox" class="toggle" name="toggle" id="toggle">
+                <div class="slider round"></div>
+            </label>
+            <br> <br>
+            <label class="range" style="padding: 4px 8px">
+                <input type="range" class="deg" name="degree" id="slider-NM">
+            </label>
+        </form>
         <div></div>
         <br>
     </div>
 
+
     <div id="error-content" class="hidden">
-        <img src="images/error.png" width="24px" height="24px">
+        <img src="images/error.png" width="48" height="48">
         <br>
-        Error(night mode is not <em>supported</em>)
+        Night mode is not <em>supported</em> in this tab!
     </div>
 </div>
 </body>

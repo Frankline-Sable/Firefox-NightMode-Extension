@@ -1,26 +1,69 @@
 (function () {
-    if(window.hasRun){
+    if (window.hasRun) {
         return;
     }
-    window.hasRun=true;
+    window.hasRun = true;
+    var nighModeToggled = false;
+    var sliderValue=70;
 
-    function changeMode(mode) {
-        if(mode){
+    function toggleNightMode() {
+        if (nighModeToggled) {
+            disableNighMode();
+        } else {
+            initNighMode();
+        }
+        nighModeToggled = !nighModeToggled;
+    }
 
-            document.body.style.backgroundColor="black";
-            document.body.style.color="white";
-        }else{
-            document.body.style.border="5px solid green";
+    function initNighMode() {
+
+        let tag = document.createElement("div");
+        tag.className = "overlay-nm";
+        tag.id = "overlay-nm";
+        document.body.appendChild(tag);
+    }
+
+    function disableNighMode() {
+        let existingNm = document.querySelectorAll(".overlay-nm");
+        for (let tag of existingNm) {
+            tag.remove();
         }
     }
 
     browser.runtime.onMessage.addListener((message) => {
         if (message.command === "nm_on") {
-            changeMode(true);
+            toggleNightMode();
         }
-        else if (message.command === "nm_off") {
-            changeMode(false);
+        else if (message.command === "SliderChange") {
+            sliderValue=message.value;
+
+        }
+        else {
+            notifyBackgroundPage();
         }
     });
+
+    function handleResponse(message) {
+        console.log(`Message from the background script: ${message.response}`)
+
+    }
+
+    function handleError(error) {
+        console.log(`Error: ${error}`)
+
+    }
+
+    function notifyBackgroundPage() {
+        var sending = browser.runtime.sendMessage({
+            btn: nighModeToggled,
+            sd:sliderValue
+        });
+
+        sending.then(handleResponse, handleError);
+
+    }
+
+    //window.addEventListener("click",notifyBackgroundPage);
+
 
 })();
